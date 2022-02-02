@@ -1,6 +1,6 @@
 .App {
   --accent-clr: rgb(4, 113, 255);
-  /* background-color: rgb(224, 222, 222); */
+  background-color: rgb(224, 222, 222);
   border: 2px solid black;
   max-width: 600px;
   margin: 2rem auto;

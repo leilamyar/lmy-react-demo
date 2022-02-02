@@ -11,3 +11,13 @@ export const makeIds = (listLength) => {
   }
   return ids;
 };
+
+export const getUniqueId = (idsList) => {
+  let id;
+  let fromNanoId = nanoid();
+  while (idsList.includes(fromNanoId)) {
+    fromNanoId = nanoid();
+  }
+  id = fromNanoId;
+  return id;
+};

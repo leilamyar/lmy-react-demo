@@ -1,7 +1,7 @@
 import './Todo.css';
 import CustomButton from '../customButton/CustomButton';
 
-const Todo = ({ todo }) => {
+const Todo = ({ todoTitle, description }) => {
 
   // const setColors = (isDone) => {
   //   if (isDone) {
@@ -12,8 +12,8 @@ const Todo = ({ todo }) => {
   return (
     <div className='todo-c'>
       <div className="todo-info-c">
-        <h4 className='todo-title'>{todo.todoTitle}</h4>
-        <div className='todo-descr'>{todo.description}</div>
+        <h4 className='todo-title'>{todoTitle}</h4>
+        <div className='todo-descr'>{description}</div>
       </div>
       <div className="todo-actions-c">
         {/* <CustomButton customBtnLabel={'Terminer'} clr={setColors(todo.isDone)} /> */}

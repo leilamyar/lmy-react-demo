@@ -1,25 +1,39 @@
+import { useState } from 'react/cjs/react.development';
 import './App.css';
 import AddTodoForm from './components/addTodoForm/AddTodoForm';
 import TodoList from "./components/todoList/TodoList";
-import { ePrios } from './utils/ePrios';
-import { makeIds } from './utils/uniqueId';
-
+import { TODOS } from './todos';
+import { getUniqueId } from './utils/uniqueId';
 
 function App() {
 
-  const todos = [
-    { todoTitle: 'Acheter du café', description: '', prio: ePrios.high, complete: true },
-    { todoTitle: 'Réaliser l\'exercice', description: 'Créer l\'application "Todo List"', prio: ePrios.normal, complete: false },
-    { todoTitle: 'Une tâche terminée', description: 'This HTML file is a template.If you open it directly in the browser, you will see an empty page. You can add webfonts, meta tags, or analytics to this file. The build step will place the bundled scripts into the <body> tag. To begin the development, run `npm start` or `yarn start`. To create a production bundle, use `npm run build` or `yarn build', prio: ePrios.high, complete: false },
-  ];
+  const [todos, setTodos] = useState(TODOS);
 
-  const uniqueIds = makeIds(todos.length);
-  todos.forEach((td, index) => td.id = uniqueIds[index]);
+  const addTodo = (newTodo) => {
+    console.log('New todo!!', newTodo);
+    newTodo.id = getUniqueId(todos);
+    setTodos(() => [
+      ...todos,
+      newTodo,
+    ]);
+    console.log('New todo added:', todos);
+  };
+
+  const removeTodo = (todoId) => {
+    setTodos(() => {
+      // TODO: make Entities from todos array
+      let newTodosList = todos.filter((t) => t.id === todoId);
+      return [
+        ...newTodosList,
+      ];
+    });
+    console.log('todo remove:');
+  };
 
   return (
     <div className="App">
       {/* <div className="todo-list-app-c"> */}
-      <AddTodoForm />
+      <AddTodoForm onAddTodo={addTodo} />
       <div className="todo-list" >
         <TodoList todos={todos} />
       </div>
