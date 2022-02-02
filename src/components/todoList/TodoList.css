@@ -1,0 +1,39 @@
+.form-field {
+  margin: 1em 0;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1em;
+}
+
+.form-c {
+  display: grid;
+}
+
+input {
+  grid-column: 2 / 5;
+}
+
+select {
+  grid-column: 2 / 3;
+}
+
+select,
+input[type="text"],
+textarea {
+  border: 1.8px solid black;
+  padding: .5em;
+}
+
+label {
+  align-self: center;
+}
+
+input[type="submit"] {
+  grid-column: 4 / 5;
+  font-family: inherit;
+  font-weight: bold;
+  background-color: var(--accent-clr);
+  color: whitesmoke;
+  border: none;
+  padding: .5em 1.2em;
+}
