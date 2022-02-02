@@ -3,11 +3,11 @@ import Todo from '../todo/Todo';
 import './TodoList.css';
 
 const TodoList = ({ todos }) => {
-  const todosJSX = todos.map((todo) => <li key={todo.id}><Todo todo={todo} /></li>);
+  const todosJSX = todos.map((todo) => <li className='todo-item' key={todo.id}><Todo todo={todo} /></li>);
   return (
     <div className="todos-c">
-      <CustomTitle className='title' titleText={'Liste des tâches'} />
-      <ul>
+      <CustomTitle titleText={'Liste des tâches'} />
+      <ul className='todo-list-c'>
         {todosJSX}
       </ul>
     </div>

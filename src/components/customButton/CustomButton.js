@@ -5,7 +5,7 @@ const CustomButton = ({ customBtnLabel, clr: { bgClr, borderClr } }) => {
   return (
     <>
       {/* <button style={{ backgroundColor: bgClr }, { border: `2px solid ${borderClr}` }}> */}
-      <button>
+      <button className='custom-btn'>
         {customBtnLabel}
       </button>
     </>

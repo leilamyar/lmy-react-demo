@@ -10,10 +10,16 @@ const Todo = ({ todo }) => {
   // }
 
   return (
-    <div className='todo-item-c'>
-      {todo.todoTitle}
-      {/* <CustomButton customBtnLabel={'Terminer'} clr={setColors(todo.isDone)} /> */}
-      <CustomButton customBtnLabel={'Terminer'} />
+    <div className='todo-c'>
+      <div className="todo-info-c">
+        <h4 className='todo-title'>{todo.todoTitle}</h4>
+        <div className='todo-descr'>{todo.description}</div>
+      </div>
+      <div className="todo-actions-c">
+        {/* <CustomButton customBtnLabel={'Terminer'} clr={setColors(todo.isDone)} /> */}
+        <CustomButton customBtnLabel={'Terminer'} />
+        <CustomButton customBtnLabel={'Supprimer'} />
+      </div>
     </div>
   );
 }
