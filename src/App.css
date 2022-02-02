@@ -1,8 +1,12 @@
 .todo-list-app-c {
   --accent-clr: rgb(4, 113, 255);
-  background-color: rgb(224, 222, 222);
+  /* background-color: rgb(224, 222, 222); */
   border: 2px solid black;
   max-width: 400px;
   margin: 2rem auto;
-  padding: 0 .2em .2em;
+  padding: 1em;
+}
+
+.TodoList {
+  margin-top: 2em;
 }
