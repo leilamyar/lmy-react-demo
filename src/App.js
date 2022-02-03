@@ -1,4 +1,4 @@
-import { useState } from 'react/cjs/react.development';
+import { useState } from 'react';
 import './App.css';
 import AddTodoForm from './components/addTodoForm/AddTodoForm';
 import TodoList from "./components/todoList/TodoList";

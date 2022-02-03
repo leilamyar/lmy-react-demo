@@ -23,6 +23,7 @@ const Todo = (props) => {
         <div className='todo-descr'>{description}</div>
       </div>
       <div className="todo-actions-c">
+        {/* FIXME: fix refactor btn side effect : delete not working anymore + btn "complete" isn't disabled */}
         <CustomButton customBtnLabel={'Terminer'} htmlAttribute={{ onClick: completeTodo }} />
         <CustomButton customBtnLabel={'Supprimer'} htmlAttribute={{ onClick: removeTodo }} />
       </div>
