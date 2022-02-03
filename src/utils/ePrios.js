@@ -3,3 +3,5 @@ export const ePrios = {
   high: 'urgent',
   low: 'faible',
 };
+
+Object.freeze(ePrios);
