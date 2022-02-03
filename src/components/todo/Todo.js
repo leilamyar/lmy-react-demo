@@ -1,7 +1,9 @@
 import './Todo.css';
 import CustomButton from '../customButton/CustomButton';
 
-const Todo = ({ todoTitle, description }) => {
+import { ePrios } from '../../utils/ePrios';
+
+const Todo = ({ todoTitle, description, prio }) => {
 
   // const setColors = (isDone) => {
   //   if (isDone) {
@@ -12,7 +14,11 @@ const Todo = ({ todoTitle, description }) => {
   return (
     <div className='todo-c'>
       <div className="todo-info-c">
-        <h4 className='todo-title'>{todoTitle}</h4>
+        <div className='todo-title-c'>
+          <h4 className='todo-title'>{todoTitle}</h4>
+          {/* <span className={(prio == ePrios.high) ? 'red-text' : ''}>{(prio === ePrios.high) ? prio : ''}</span> */}
+          <span className='prio-high'>{(prio === ePrios.high) ? `(${prio})` : ''}</span>
+        </div>
         <div className='todo-descr'>{description}</div>
       </div>
       <div className="todo-actions-c">
