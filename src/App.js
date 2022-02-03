@@ -40,12 +40,9 @@ function App() {
   const removeTodo = (todoId) => {
     setTodos(() => {
       // TODO: make Entities from todos array
-      let newTodosList = todos.filter((t) => t.id === todoId);
-      return [
-        ...newTodosList,
-      ];
+      let removed = todos.filter(t => t.id !== todoId);
+      setTodos(() => removed);
     });
-    console.log('todo remove:');
   };
 
   return (
@@ -55,7 +52,8 @@ function App() {
       <div className="todo-list" >
         <TodoList
           todos={todos}
-          onCompleteTodo={completeTodo} />
+          onCompleteTodo={completeTodo}
+          onRemoveTodo={removeTodo} />
       </div>
       {/* </div> */}
     </div>

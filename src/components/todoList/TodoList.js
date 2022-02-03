@@ -6,7 +6,10 @@ import './TodoList.css';
 const TodoList = (props) => {
   const { todos } = props;
   const completeTodo = (todoId) => {
-    props.onCompleteTodo(todoId)
+    props.onCompleteTodo(todoId);
+  };
+  const removeTodo = (todoId) => {
+    props.onRemoveTodo(todoId);
   };
 
   const todosJSX = todos
@@ -14,7 +17,8 @@ const TodoList = (props) => {
       <li className='todo-item' key={todo.id}>
         <Todo
           {...todo}
-          onCompleteTodo={completeTodo} />
+          onCompleteTodo={completeTodo}
+          onRemoveTodo={removeTodo} />
       </li>);
   return (
     <div className="todos-c">
@@ -28,10 +32,12 @@ const TodoList = (props) => {
 
 TodoList.defaultProps = {
   onCompleteTodo: () => { },
+  onRemoveTodo: () => { },
 }
 
 TodoList.propTypes = {
   onCompleteTodo: PropTypes.func,
+  onRemoveTodo: PropTypes.func,
 }
 
 export default TodoList;

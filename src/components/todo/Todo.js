@@ -6,15 +6,12 @@ import { ePrios } from '../../utils/ePrios';
 
 const Todo = (props) => {
   const { id, todoTitle, description, prio, complete } = props;
-  // const setColors = (isDone) => {
-  //   if (isDone) {
-  //     return { bgClr: 'darkgrey', borderClr: 'darkgrey' };
-  //   } else return { bgClr: 'white', borderClr: 'black' };
-  // }
 
   const completeTodo = () => {
-    // console.log('Terminer btn clicked ! id:', id);
     props.onCompleteTodo(id);
+  };
+  const removeTodo = () => {
+    props.onRemoveTodo(id);
   };
   return (
     <div className={`todo-c ${complete ? 'completed' : ''}`}>
@@ -26,10 +23,10 @@ const Todo = (props) => {
         <div className='todo-descr'>{description}</div>
       </div>
       <div className="todo-actions-c">
-        {/* <CustomButton customBtnLabel={'Terminer'} clr={setColors(todo.isDone)} /> */}
         <button onClick={completeTodo} disabled={complete}>Terminer</button>
+        <button onClick={removeTodo}>Supprimer</button>
         {/* <CustomButton customBtnLabel={'Terminer'} /> */}
-        <CustomButton customBtnLabel={'Supprimer'} />
+        {/* <CustomButton customBtnLabel={'Supprimer'} /> */}
       </div>
     </div>
   );
@@ -37,10 +34,12 @@ const Todo = (props) => {
 
 Todo.defaultProps = {
   onCompleteTodo: () => { },
+  onRemoveTodo: () => { },
 }
 
 Todo.propTypes = {
   onCompleteTodo: PropTypes.func,
+  onRemoveTodo: PropTypes.func,
 }
 
 export default Todo;
