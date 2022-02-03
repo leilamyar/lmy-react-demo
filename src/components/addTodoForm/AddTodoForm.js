@@ -7,6 +7,7 @@ import { ePrios } from '../../utils/ePrios';
 const AddTodoForm = (props) => {
 
   const [inputs, setInputs] = useState({});
+  const [todoTitleInputIsFaulty, setTodoTitleInputIsFaulty] = useState(false);
 
   const handleInput = (e) => {
     const { name, value } = e.target;
@@ -14,13 +15,22 @@ const AddTodoForm = (props) => {
       ...inp,
       [name]: value,
     }));
+    if (name === 'todoTitle') {
+      setTodoTitleInputIsFaulty(false);
+    }
   };
 
   const handleAddTodo = (e) => {
     e.preventDefault();
     const { todoTitle, description, prio } = inputs;
-    let newTodo = { todoTitle, description, prio, complete: false };
-    props.onAddTodo(newTodo);
+    if (!todoTitle || todoTitle === '') {
+      setTodoTitleInputIsFaulty(true);
+    }
+    else {
+      setTodoTitleInputIsFaulty(false);
+      let newTodo = { todoTitle, description, prio, complete: false };
+      props.onAddTodo(newTodo);
+    }
   };
 
   return (
@@ -28,9 +38,10 @@ const AddTodoForm = (props) => {
       <CustomTitle className='title' titleText={'Ajouter une nouvelle tâche'} />
       <div className="form-c" onSubmit={handleAddTodo}>
         <form id='todo-form'>
-          <div className='form-field'>
+          <div id='todo-title-input' className='form-field'>
             <label htmlFor="todoTitle">Nom:</label>
-            <input type="text" name="todoTitle" id="todoTitle" value={inputs.todoTitle} onChange={handleInput} />
+            <input className={todoTitleInputIsFaulty ? 'faulty-input' : ''} type="text" name="todoTitle" id="todoTitle" value={inputs.todoTitle} onChange={handleInput} />
+            <p hidden={!todoTitleInputIsFaulty} className='faulty-input-msg'>Le nom de la tâche est requis</p>
           </div>
           <div className='form-field'>
             <label htmlFor="description">Description:</label>

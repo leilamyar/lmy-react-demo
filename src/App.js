@@ -10,13 +10,13 @@ function App() {
   const [todos, setTodos] = useState(TODOS);
 
   const addTodo = (newTodo) => {
-    console.log('New todo!!', newTodo);
+    // console.log('New todo!!', newTodo);
     newTodo.id = getUniqueId(todos);
     setTodos(() => [
       ...todos,
       newTodo,
     ]);
-    console.log('New todo added:', todos);
+    // console.log('New todo added:', todos);
   };
 
   const removeTodo = (todoId) => {
