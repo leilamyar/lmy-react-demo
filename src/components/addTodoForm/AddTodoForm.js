@@ -6,7 +6,7 @@ import { ePrios } from '../../utils/ePrios';
 
 const AddTodoForm = (props) => {
 
-  const [inputs, setInputs] = useState({});
+  const [inputs, setInputs] = useState({ todoTitle: '', description: '', prio: ePrios.normal });
   const [todoTitleInputIsFaulty, setTodoTitleInputIsFaulty] = useState(false);
 
   const handleInput = (e) => {

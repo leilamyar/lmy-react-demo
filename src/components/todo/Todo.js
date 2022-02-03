@@ -23,10 +23,8 @@ const Todo = (props) => {
         <div className='todo-descr'>{description}</div>
       </div>
       <div className="todo-actions-c">
-        <button onClick={completeTodo} disabled={complete}>Terminer</button>
-        <button onClick={removeTodo}>Supprimer</button>
-        {/* <CustomButton customBtnLabel={'Terminer'} /> */}
-        {/* <CustomButton customBtnLabel={'Supprimer'} /> */}
+        <CustomButton customBtnLabel={'Terminer'} htmlAttribute={{ onClick: completeTodo }} />
+        <CustomButton customBtnLabel={'Supprimer'} htmlAttribute={{ onClick: removeTodo }} />
       </div>
     </div>
   );

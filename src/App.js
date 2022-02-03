@@ -9,14 +9,16 @@ function App() {
 
   const [todos, setTodos] = useState(TODOS);
 
+  /**
+   * Adds a todo to todos list
+   * @param {Object} newTodo 
+   */
   const addTodo = (newTodo) => {
-    // console.log('New todo!!', newTodo);
     newTodo.id = getUniqueId(todos);
     setTodos(() => [
       ...todos,
       newTodo,
     ]);
-    // console.log('New todo added:', todos);
   };
 
   /**
@@ -24,30 +26,26 @@ function App() {
    * @param {string} todoId 
    */
   const completeTodo = (todoId) => {
-    setTodos(() => {
-      // TODO: make Entities from todos array
-      todos.map((t) => {
-        if (t.id === todoId) {
-          t.complete = true;
-        }
-      });
-      setTodos(() => [
-        ...todos,
-      ]);
-    });
+    // TODO: make Entities from todos array
+    setTodos((todos) => todos.map((t) => {
+      if (t.id === todoId) {
+        t.complete = true;
+      }
+      return t;
+    }));
   };
 
+  /**
+   * Remove todo from todos list
+   * @param {string} todoId 
+   */
   const removeTodo = (todoId) => {
-    setTodos(() => {
-      // TODO: make Entities from todos array
-      let removed = todos.filter(t => t.id !== todoId);
-      setTodos(() => removed);
-    });
+    // TODO: make Entities from todos array
+    setTodos((todos) => todos.filter(t => t.id !== todoId));
   };
 
   return (
     <div className="App">
-      {/* <div className="todo-list-app-c"> */}
       <AddTodoForm onAddTodo={addTodo} />
       <div className="todo-list" >
         <TodoList
@@ -55,7 +53,6 @@ function App() {
           onCompleteTodo={completeTodo}
           onRemoveTodo={removeTodo} />
       </div>
-      {/* </div> */}
     </div>
   );
 }
