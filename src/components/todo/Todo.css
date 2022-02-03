@@ -7,6 +7,21 @@
   grid-template-columns: 3fr 1fr;
 }
 
+.completed {
+  background-color: lightgrey;
+  color: darkgrey;
+  border: 2px solid grey;
+}
+
+.completed .prio-high {
+  color: grey;
+}
+
+button:disabled {
+  cursor: not-allowed;
+  border: 2px solid grey;
+}
+
 .todo-title {
   /* margin: .5em 0; */
   margin: 0;

@@ -19,6 +19,24 @@ function App() {
     // console.log('New todo added:', todos);
   };
 
+  /**
+   * Set todo complete attr to false
+   * @param {string} todoId 
+   */
+  const completeTodo = (todoId) => {
+    setTodos(() => {
+      // TODO: make Entities from todos array
+      todos.map((t) => {
+        if (t.id === todoId) {
+          t.complete = true;
+        }
+      });
+      setTodos(() => [
+        ...todos,
+      ]);
+    });
+  };
+
   const removeTodo = (todoId) => {
     setTodos(() => {
       // TODO: make Entities from todos array
@@ -35,7 +53,9 @@ function App() {
       {/* <div className="todo-list-app-c"> */}
       <AddTodoForm onAddTodo={addTodo} />
       <div className="todo-list" >
-        <TodoList todos={todos} />
+        <TodoList
+          todos={todos}
+          onCompleteTodo={completeTodo} />
       </div>
       {/* </div> */}
     </div>
