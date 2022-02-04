@@ -25,7 +25,7 @@ const SearchFilter = (props) => {
     // <form onSubmit={handleSubmit}>
     <form className='filter-search-form'>
       {/* <div> */}
-      <label htmlFor="searchFilter">Search:</label>
+      {/* <label htmlFor="searchFilter">Search:</label> */}
       <input type="text"
         name="searchFilter" id="searchFilter"
         value={inputs.searchFilter}

@@ -8,11 +8,14 @@ const Todo = (props) => {
   const { id, todoTitle, description, prio, complete } = props;
 
   const completeTodo = () => {
+    // console.log('todo comp: complete clicked! id:', id);
     props.onCompleteTodo(id);
   };
   const removeTodo = () => {
+    // console.log('todo comp: rm clicked! id:', id);
     props.onRemoveTodo(id);
   };
+
   return (
     <div className={`todo-c ${complete ? 'completed' : ''}`}>
       <div className="todo-info-c">
@@ -23,7 +26,7 @@ const Todo = (props) => {
         <div className='todo-descr'>{description}</div>
       </div>
       <div className="todo-actions-c">
-        {/* FIXME: fix refactor btn side effect : delete not working anymore + btn "complete" isn't disabled */}
+        {/* FIXME: fix refactor btn regression: delete not working anymore + btn "complete" isn't disabled */}
         <CustomButton customBtnLabel={'Terminer'} htmlAttribute={{ onClick: completeTodo }} />
         <CustomButton customBtnLabel={'Supprimer'} htmlAttribute={{ onClick: removeTodo }} />
       </div>
