@@ -18,50 +18,31 @@ const TodoList = (props) => {
     props.onRemoveTodo(todoId);
   };
   // TODO: handle debounce using lodash or underscore.js
-  // FIXME: delete selection doesn't trigger new search
   const handleSearchFilter = (inputSearchFilter) => {
-    console.log('input detected!!', inputSearchFilter);
-    setSearchFilter(inputSearchFilter)
+    setSearchFilter(inputSearchFilter);
   };
 
-  /**
- * Takes an an array of Todos, and returns them as an array of Todos ll elements
- * @param {Array} todosList 
- * @returns 
- */
-  const makeTodosListItemsJSX = (todosList) => {
-    return todosList
-      .map((todo) =>
-        <li className='todo-item' key={todo.id}>
-          <Todo
-            {...todo}
-            onCompleteTodo={completeTodo}
-            onRemoveTodo={removeTodo} />
-        </li>);
-  };
-
-  const filterList = (searchFilter) => {
-    if (!searchFilter || searchFilter === '') {
-      return makeTodosListItemsJSX(todos);
-    }
-    // console.log('filtering list ....');
-    let filtered = todos.filter((todo) => {
-      let found = todo.todoTitle.split(' ').find((w) => w.toLowerCase().startsWith(searchFilter.toLowerCase()));
-      let res = found ? true : false;
-      return res;
-    });
-    return makeTodosListItemsJSX(filtered);
-  }
+  const data = todos.filter((todoFiltered) => {
+    if (!searchFilter || searchFilter === '') return true;
+    let found = todoFiltered.todoTitle
+      .split(' ')
+      .find((w) => w.toLowerCase().startsWith(searchFilter.toLowerCase()));
+    return found !== undefined;
+  }).map((todo) => {
+    return (<li className='todo-item' key={todo.id}>
+      <Todo
+        {...todo}
+        onCompleteTodo={completeTodo}
+        onRemoveTodo={removeTodo} />
+    </li>);
+  })
 
   return (
     <div className="todos-c">
       <CustomTitle titleText={'Liste des tâches'} />
       <SearchFilter onSearchFilter={handleSearchFilter} />
       <ul className='todo-list-c'>
-        {/* {makeTodosJSX(todos)} */}
-        {/* {makeTodosJSX(handleSearchFilter(todos, 'ca'))} */}
-        {/* {searchFilter && filterList(searchFilter)} */}
-        {filterList(searchFilter)}
+        {data}
       </ul>
     </div>
   );

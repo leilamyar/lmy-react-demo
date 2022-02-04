@@ -4,7 +4,8 @@ import './CustomButton.css';
 const CustomButton = (props) => {
   const { customBtnLabel } = props;
   return (
-    <button {...props.htmlAttribute} className={`${props.htmlAttribute.className} custom-btn`}>
+    <button {...props.htmlAttribute}
+      className={`${props.htmlAttribute.className} custom-btn`}>
       {customBtnLabel}
     </button>
   );
